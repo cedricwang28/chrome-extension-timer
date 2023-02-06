@@ -1,5 +1,5 @@
 body {
-  height: 400px;
+  height: 450px;
   width: 320px;
   padding: 10px 15px;
   background-color: indianred;
@@ -31,14 +31,8 @@ body {
   width: 100px;
   cursor: pointer;
 }
-#task-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
 
-.task-container {
+.add-task-container {
   display: flex;
   height: 28px;
   margin: 20px 0;
@@ -57,7 +51,7 @@ body {
   font-style: italic;
 }
 
-.task-container button {
+.add-task-container button {
   color: indianred;
   background-color: whitesmoke;
   border: none;
@@ -71,4 +65,39 @@ body {
   align-items: center;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+#task-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding: 0 6px;
+}
+#task-container li {
+  color: white;
+  display: grid;
+  height: auto;
+  grid-template-columns: 28px 1fr 20px;
+  border-bottom: 1px white solid;
+  padding: 8px 0;
+}
+#task-container li .cbx {
+  margin: 0;
+  padding: 0;
+  width: 20px;
+}
+#task-container li p {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+#task-container li .event {
+  font-size: 15px;
+  line-height: 1;
+}
+#task-container li .delete {
+  cursor: pointer;
+}
+input[type="checkbox"] {
+  accent-color: #90e0ef;
 }

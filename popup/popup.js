@@ -102,7 +102,7 @@ function deleteTask(taskNum) {
 
 function renderTasks() {
   const taskContainer = document.getElementById("task-container");
-  taskContainer.textContent = "";
+  //   taskContainer.textContent = "";
   tasks.forEach((text, num) => {
     renderTask(num);
   });
