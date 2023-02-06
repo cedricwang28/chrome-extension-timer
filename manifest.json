@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Timer",
+  "version": "1.0",
+  "description": "help you get small tasks done with concentration",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_title": "Timer",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": ["storage", "alarms", "notifications"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options/options.html"
+}
