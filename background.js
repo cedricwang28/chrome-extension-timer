@@ -11,10 +11,13 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         let isRunning = true;
         if (timer === 60 * res.timeOption) {
           console.log(this, "time is up");
-          this.registration.showNotification("timer", {
-            body: `${res.timeOption} minites has passed!`,
-            icon: "icon.png",
+          chrome.notifications.create({
+            title: `${res.timeOption} minites has passed!`,
+            message: `Time is up for doing current`,
+            iconUrl: "./icon.png",
+            type: "basic",
           });
+
           timer = 0;
           isRunning = false;
         }

@@ -62,24 +62,31 @@ function saveTasks() {
 }
 
 function renderTask(taskNum) {
-  const taskRow = document.createElement("div");
+  const taskRow = document.createElement("li");
 
-  const text = document.createElement("input");
-  text.type = "text";
-  text.placeholder = "Enter a task";
-  text.value = tasks[taskNum];
-  text.addEventListener("change", () => {
-    tasks[taskNum] = text.value;
+  const task = tasks[taskNum];
+
+  const cbx = document.createElement("input");
+  cbx.type = "checkbox";
+  cbx.checked = task.isChecked;
+  cbx.classList.add("cbx");
+
+  cbx.addEventListener("change", () => {
+    tasks[taskNum].isChecked = cbx.checked;
     saveTasks();
   });
+  const text = document.createElement("p");
+  text.classList.add("event");
+  text.innerHTML = task.task;
 
-  const deleteBtn = document.createElement("input");
-  deleteBtn.type = "button";
-  deleteBtn.value = "x";
+  const deleteBtn = document.createElement("p");
+  deleteBtn.classList.add("delete");
+  deleteBtn.innerText = "X";
   deleteBtn.addEventListener("click", () => {
     deleteTask(taskNum);
   });
 
+  taskRow.appendChild(cbx);
   taskRow.appendChild(text);
   taskRow.appendChild(deleteBtn);
 
@@ -88,8 +95,16 @@ function renderTask(taskNum) {
 }
 
 function addTask() {
+  let task = document.querySelector(".task-input").value;
+  if (!task) {
+    alert("please input an event");
+    return;
+  }
   const taskNum = tasks.length;
-  tasks.push("");
+  tasks.push({
+    isChecked: false,
+    task,
+  });
   renderTask(taskNum);
   saveTasks();
 }
@@ -102,7 +117,7 @@ function deleteTask(taskNum) {
 
 function renderTasks() {
   const taskContainer = document.getElementById("task-container");
-  //   taskContainer.textContent = "";
+  taskContainer.textContent = "";
   tasks.forEach((text, num) => {
     renderTask(num);
   });
